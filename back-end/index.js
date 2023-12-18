@@ -7,6 +7,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js"
+import User from "./models/User.js"
+import userRoutes from "./routes/users.js"
 // Configurations
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,6 +19,10 @@ app.use(bodyParser.json({limit: "30mb" , extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb" , extended: true}));
 app.use(cors());
 app.use('/assests' , express.static(path.join(__dirname,'public/assets')));
+
+// routes
+app.use("/auth",authRoutes);
+app.use("/users",userRoutes);
 
 // Mongoose setup
 const PORT = process.env.PORT || 6001;
@@ -29,5 +35,6 @@ mongoose.connect(process.env.MONGO_URL,{
     })
 })
 
-// routes
-app.use("/auth",authRoutes);
+
+
+
