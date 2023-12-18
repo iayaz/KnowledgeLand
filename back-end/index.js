@@ -22,7 +22,7 @@ app.use('/assests' , express.static(path.join(__dirname,'public/assets')));
 
 // routes
 app.use("/auth",authRoutes);
-app.use("/users",userRoutes);
+// app.use("/users",userRoutes);
 
 // Mongoose setup
 const PORT = process.env.PORT || 6001;

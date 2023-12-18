@@ -6,3 +6,5 @@ const router = express.Router();
 // Read
 router.get("/:id",verifyToken,getUser);
 
+export default router;
+
